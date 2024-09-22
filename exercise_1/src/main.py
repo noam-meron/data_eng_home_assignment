@@ -13,13 +13,13 @@ def main():
 
     try:
         for df_chunk in processor.extract_applications():
-            db_manager.insert_dataframe('applications', df_chunk)
+            db_manager.insert_dataframe('applications', df_chunk, 'replace')
 
         for df_chunk in processor.extract_mediation_raw_data():
-            db_manager.insert_dataframe('mediation_raw_data', df_chunk)
+            db_manager.insert_dataframe('mediation_raw_data', df_chunk, 'replace')
 
         aggregated_data = processor.aggregate_data()
-        db_manager.insert_dataframe('mediation_aggregation', aggregated_data)
+        db_manager.insert_dataframe('mediation_aggregation', aggregated_data, 'append')
         db_manager.write_to_csv(aggregated_data, 'mediation_aggregation.csv')
 
     except Exception as e:

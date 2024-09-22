@@ -66,12 +66,12 @@ class DatabaseManager:
             logging.error(f"Error fetching data for query '{query_name}': {e}")
             raise
 
-    def insert_dataframe(self, table_name: str, df: pd.DataFrame, chunk_size: int = 1000):
+    def insert_dataframe(self, table_name: str, df: pd.DataFrame, if_exists: str, chunk_size: int = 1000):
         if df.empty:
             return
 
         try:
-            df.to_sql(table_name, self.conn, if_exists='replace', index=False, chunksize=chunk_size)
+            df.to_sql(table_name, self.conn, if_exists=if_exists, index=False, chunksize=chunk_size)
         except sqlite3.Error as e:
             logging.error(f"Error inserting data into {table_name}: {e}")
             self.conn.rollback()
