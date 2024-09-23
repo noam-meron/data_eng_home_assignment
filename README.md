@@ -41,5 +41,5 @@ Ensure you have Python 3.12 installed.
 3. Run the main script:
 
    ```bash
-   python main.py
+   python -m exercise_1.main
    ```
