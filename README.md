@@ -4,7 +4,7 @@ This project is designed to process mediation data using SQLite and pandas. It i
 
 ## Features
 
-- Reads mediation data and application data from CSV files.
+- Reads mediation data and application data.
 - Inserts the data into a SQLite database.
 - Performs aggregations based on the data.
 - Writes the aggregated data into a new CSV file: 'exercise_1/data/processed/mediation_aggregation.csv'.
